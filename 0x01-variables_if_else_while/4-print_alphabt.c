@@ -2,7 +2,7 @@
 
 /**
  * main - Entrypoint
- * Prints the alphabet in lower and upper cases
+ * Prints the alphabet except 'q' and 'e'
  *
  * Return: Always 0
  */
@@ -11,14 +11,12 @@ int main(void)
 	char c = 'a';
 
 	while (c <= 'z')
-		putchar(c++);
-
-	c = 'A';
-	while (c <= 'Z')
-		putchar(c++);
-
+	{
+		if (c != 'e' && c != 'q')
+			putchar(c);
+		c++;
+	}
 	putchar('\n');
 
 	return (0);
 }
-
