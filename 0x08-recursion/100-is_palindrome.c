@@ -3,7 +3,7 @@
 /**
  * _strlen - returns the length of a string.
  * @s: string
- * Return: the length of @s
+ * Return: the length of a string.
  */
 int _strlen(char *s)
 {
@@ -14,16 +14,20 @@ int _strlen(char *s)
 }
 
 /**
- * _is_pal - checks palindrome
- * @s: string to check
- * @i: current index
- * Return: 1 if @c is mirrored in @s
+ * _is_pal - compares each character of the string.
+ * @s: string
+ * @n1: smallest iterator.
+ * @n2: biggest iterator.
+ * Return: .
  */
-int _is_pal(char *s, int i)
+int _is_pal(char *s, int n1, int n2)
 {
-	if (*s == *(s + i))
-		return (_is_pal(s + i, i - 1));
-
+	if (*(s + n1) == *(s + n2))
+	{
+		if (n1 == n2 || n1 == n2 + 1)
+			return (1);
+		return (_is_pal(s, n1 + 1, n2 - 1));
+	}
 	return (0);
 }
 
@@ -34,12 +38,7 @@ int _is_pal(char *s, int i)
  */
 int is_palindrome(char *s)
 {
-	int length;
-
-	length = _strlen(s);
-
-	if (length == 0)
+	if (*s == '\0')
 		return (1);
-	else
-		return (_is_pal(s, length - 1));
+	return (_is_pal(s, 0, _strlen(s) - 1));
 }
