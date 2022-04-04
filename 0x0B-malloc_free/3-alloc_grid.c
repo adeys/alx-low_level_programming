@@ -27,7 +27,7 @@ int *_memset(int *s, int b, int n)
  */
 int **alloc_grid(int width, int height)
 {
-	int i;
+	int i, j;
 	int **grid;
 
 	if (width == 0 || height == 0)
@@ -41,7 +41,13 @@ int **alloc_grid(int width, int height)
 	{
 		grid[i] = malloc(sizeof(int) * width);
 		if (!grid[i])
+		{
+			for (j = 0; j <= i; j++)
+				free(grid[j]);
+
+			free(grid);
 			return (NULL);
+		}
 
 		_memset(grid[i], 0, width);
 	}
