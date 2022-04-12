@@ -42,7 +42,7 @@ char *_strcpy(char *dest, char *src)
  * @owner: dog owner
  * Return: new created dog
  */
-dog_t *new_dog(char *name __attribute__((unused)), float age __attribute__((unused)), char *owner __attribute__((unused)))
+dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog;
 	int len;
